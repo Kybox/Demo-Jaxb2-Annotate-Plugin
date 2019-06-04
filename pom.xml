@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>fr.kybox</groupId>
+    <artifactId>demo-jaxb2-annotate-plugin</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <defaultGoal>install</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.14.0</version>
+                <configuration>
+
+                    <!-- XSD source directory -->
+                    <schemaDirectory>src/main/resources/xsd</schemaDirectory>
+
+                    <!-- Base generated classes directory -->
+                    <generateDirectory>src/main/java</generateDirectory>
+
+                    <!-- Don't clear package ! -->
+                    <cleanPackageDirectories>false</cleanPackageDirectories>
+
+                    <!-- Provides additional customizations that are not defined by the JAXB specification -->
+                    <extension>true</extension>
+
+                    <!-- Options -->
+                    <noFileHeader>true</noFileHeader>
+                    <locale>us</locale>
+                    <encoding>utf-8</encoding>
+
+                    <!-- Arguments -->
+                    <args>
+                        <arg>-Xannotate</arg>
+                    </args>
+
+                    <!-- Dependencies to generate classes -->
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2_commons</groupId>
+                            <artifactId>jaxb2-basics-annotate</artifactId>
+                            <version>1.1.0</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>javax.persistence</groupId>
+                            <artifactId>javax.persistence-api</artifactId>
+                            <version>2.2</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>javax.validation</groupId>
+                            <artifactId>validation-api</artifactId>
+                            <version>2.0.1.Final</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
